@@ -111,6 +111,16 @@
     .price-card li::before { content: "✓  "; color: var(--accent); font-weight: 700; }
     .price-card .btn { text-align: center; }
 
+    .quote-box { margin-top: 40px; background: var(--bg-alt); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .quote-box h3 { font-size: 1.4rem; }
+    .quote-box p { color: var(--muted); margin: 0; }
+    .quote-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; font-size: .95rem; }
+    .quote-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .quote-table td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+    .quote-table tr.tot td { background: var(--brand); color: #fff; font-weight: 700; }
+    .quote-box .fine { grid-column: 1 / -1; font-size: .85rem; }
+    @media (max-width: 760px) { .quote-box { grid-template-columns: 1fr; padding: 22px; } }
+
     /* Testimonials */
     .quote { font-size: 1.05rem; color: var(--ink) !important; font-style: italic; margin-bottom: 18px !important; }
     .who { font-weight: 600; font-size: .95rem; }
@@ -168,7 +178,7 @@
         <a href="#demo" class="btn btn-primary">Book a free 20-minute demo</a>
         <a href="#pricing" class="btn btn-ghost">See pricing</a>
       </div>
-      <p class="hero-note">No long-term contract · Keep your existing phone numbers · Live within days</p>
+      <p class="hero-note">Powered by Ooma Office, PCMag Business Choice for VoIP · 14 days free · Month-to-month</p>
     </div>
     <div class="mock" aria-label="Example dashboard">
       <div class="mock-row"><strong>Today's patient queue</strong><span class="pill pill-live">LIVE</span></div>
@@ -213,12 +223,12 @@
       <p class="lead">Built for clinics, specialty practices, and multi-location groups.</p>
     </div>
     <div class="grid g3" style="margin-top:44px">
-      <div class="card"><div class="icon">📞</div><h3>Cloud phone system</h3><p>Smart call routing, IVR, call queues, and after-hours handling. Keep your numbers and work from any device.</p></div>
-      <div class="card"><div class="icon">🎥</div><h3>Virtual visits</h3><p>Browser-based video visits with a branded waiting room. Patients join from a link with no app download.</p></div>
-      <div class="card"><div class="icon">💬</div><h3>Two-way patient texting</h3><p>Reminders, confirmations, intake links, and follow-ups patients actually read and answer.</p></div>
-      <div class="card"><div class="icon">📅</div><h3>No-show reduction</h3><p>Automated reminders and one-tap rescheduling fill empty slots before they cost you.</p></div>
-      <div class="card"><div class="icon">🔒</div><h3>HIPAA-ready security</h3><p>Encrypted calls, video, and messages, with a signed BAA and role-based access for staff.</p></div>
-      <div class="card"><div class="icon">📊</div><h3>Analytics dashboard</h3><p>See call volume, answer rates, wait times, and visit outcomes for every location in real time.</p></div>
+      <div class="card"><div class="icon">📞</div><h3>Virtual receptionist & ring groups</h3><p>Greet every caller, route them to the right desk automatically, and ring several team members at once so calls don't go unanswered.</p></div>
+      <div class="card"><div class="icon">🎥</div><h3>HD video visits</h3><p>Built-in videoconferencing with screen sharing for virtual consults and follow-ups.</p></div>
+      <div class="card"><div class="icon">💬</div><h3>Texting & Shift-to-Text</h3><p>Two-way SMS from your practice number. Callers on hold can press a key to switch to a text conversation instead.</p></div>
+      <div class="card"><div class="icon">📅</div><h3>Online bookings</h3><p>Patients schedule appointments online, any time, without calling the front desk.</p></div>
+      <div class="card"><div class="icon">📠</div><h3>Virtual fax</h3><p>Send and receive faxes digitally (referrals, records, prior authorizations) with no fax machine.</p></div>
+      <div class="card"><div class="icon">📊</div><h3>Call recording & analytics</h3><p>Record calls for training and reference, transcribe voicemail, and track call volume and answer rates.</p></div>
     </div>
   </div>
 </section>
@@ -259,54 +269,72 @@
 </section>
 
 <!-- PRICING -->
-<!-- TODO: Replace the prices below with Telefonetica Health's real pricing. -->
+<!-- TODO: Fill in Essentials and Pro Plus per-user prices. Pro price taken from a 5-user sample quote. -->
 <section id="pricing">
   <div class="wrap">
     <div class="center">
       <div class="eyebrow">Pricing</div>
-      <h2>Simple plans that grow with your practice.</h2>
-      <p class="lead">Priced per provider, per month. Onboarding and number porting are included on every plan.</p>
+      <h2>Three plans. 100+ features in every one.</h2>
+      <p class="lead">Priced per user, per month, on month-to-month terms. Unlimited calling in the US, Canada, Mexico and Puerto Rico on every plan.</p>
     </div>
     <div class="grid g3" style="margin-top:44px">
       <div class="card price-card">
-        <h3>Starter</h3>
-        <p>For single-location practices getting started.</p>
-        <div class="price">$XX<small>/provider/mo</small></div>
+        <h3>Essentials</h3>
+        <p>For small offices that need a reliable phone line.</p>
+        <div class="price">$XX<small>/user/mo</small></div>
         <ul>
-          <li>Cloud phone system & IVR</li>
-          <li>Appointment reminder texts</li>
-          <li>Basic call analytics</li>
-          <li>Email support</li>
+          <li>100+ standard features</li>
+          <li>Unlimited calling (US, CA, MX, PR)</li>
+          <li>Virtual receptionist</li>
+          <li>Mobile app</li>
         </ul>
         <a href="#demo" class="btn btn-ghost">Get started</a>
       </div>
       <div class="card price-card featured">
         <div class="badge">Most popular</div>
-        <h3>Growth</h3>
-        <p>For busy clinics that want telehealth and automation.</p>
-        <div class="price">$XX<small>/provider/mo</small></div>
+        <h3>Pro</h3>
+        <p>For clinics that text, video, and record calls.</p>
+        <div class="price">$19.95<small>/user/mo</small></div>
         <ul>
-          <li>Everything in Starter</li>
-          <li>Virtual visits & waiting room</li>
-          <li>Two-way patient texting</li>
-          <li>No-show recovery automation</li>
-          <li>Priority phone support</li>
+          <li>Everything in Essentials</li>
+          <li>Desktop app</li>
+          <li>Text messaging</li>
+          <li>Video meetings (up to 25 people)</li>
+          <li>Call recording & analytics</li>
+          <li>Voicemail transcription</li>
         </ul>
         <a href="#demo" class="btn btn-primary">Book a demo</a>
       </div>
       <div class="card price-card">
-        <h3>Enterprise</h3>
-        <p>For multi-location groups and health systems.</p>
-        <div class="price">Custom</div>
+        <h3>Pro Plus</h3>
+        <p>For busy practices with high call volume.</p>
+        <div class="price">$XX<small>/user/mo</small></div>
         <ul>
-          <li>Everything in Growth</li>
-          <li>Multi-location routing</li>
-          <li>EHR & scheduling integrations</li>
-          <li>Dedicated success manager</li>
-          <li>Custom SLAs</li>
+          <li>Everything in Pro</li>
+          <li>CRM integration</li>
+          <li>Call queuing & Shift-to-Text</li>
+          <li>Online bookings</li>
+          <li>Team chat & hot desking</li>
         </ul>
         <a href="#demo" class="btn btn-ghost">Talk to sales</a>
       </div>
+    </div>
+
+    <div class="quote-box">
+      <div>
+        <div class="eyebrow">Sample quote</div>
+        <h3>A 5-person clinic on Ooma Office Pro</h3>
+        <p>No desk phones to buy: staff use the mobile and desktop apps. Month-to-month service with the first 14 days free.</p>
+      </div>
+      <table class="quote-table">
+        <tr><td>Ooma Office Pro × 5 users</td><td>$99.75/mo</td></tr>
+        <tr><td>Hardware (mobile & desktop app)</td><td>$0</td></tr>
+        <tr><td>Ooma AI</td><td>$0</td></tr>
+        <tr><td>Activation fee (one time)</td><td>$29.95</td></tr>
+        <tr class="tot"><td>Monthly total</td><td>$99.75/mo</td></tr>
+        <tr><td>Service term · Free days</td><td>1 month · 14 days</td></tr>
+      </table>
+      <p class="fine">Taxes and regulatory fees not included. Your quote depends on number of users, plan, and any hardware or internet service.</p>
     </div>
   </div>
 </section>
@@ -340,8 +368,9 @@
       <details><summary>Can we keep our existing phone numbers?</summary><p>Yes. We port your current numbers for you, and patients keep calling the same numbers with no downtime.</p></details>
       <details><summary>How long does setup take?</summary><p>Most single-location practices are live within a few days. Multi-location rollouts are scheduled to fit your operations.</p></details>
       <details><summary>Do patients need to download an app for video visits?</summary><p>No. Patients join from a secure link in their browser or text message.</p></details>
-      <details><summary>Does it integrate with our EHR or scheduling system?</summary><p>Integrations are available on Enterprise plans. Tell us what you use during your demo and we'll walk you through the options.</p></details>
-      <details><summary>Is there a long-term contract?</summary><p>No. Plans are month-to-month, and annual plans are available at a discount.</p></details>
+      <details><summary>Does it integrate with our other software?</summary><p>CRM integration is included on Pro Plus. Tell us what you use during your demo and we'll walk you through the options.</p></details>
+      <details><summary>Is there a long-term contract?</summary><p>No. Service is month-to-month, and new accounts get 14 days free.</p></details>
+      <details><summary>Do we have to buy desk phones?</summary><p>No. Your team can make and take calls from the Ooma mobile and desktop apps. Desk phones are optional.</p></details>
     </div>
   </div>
 </section>
