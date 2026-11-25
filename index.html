@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telefonetica Health | Telehealth & Patient Communications for Clinics</title>
+  <meta name="description" content="Telefonetica Health gives clinics and practices one platform for virtual visits, patient calls, and messaging, so they answer more calls and lose fewer patients.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f3f7fa;
+      --ink: #0f2233;
+      --muted: #4d6273;
+      --brand: #0b6e8f;
+      --brand-dark: #08536b;
+      --accent: #17b28a;
+      --line: #dde6ec;
+      --card: #ffffff;
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(15, 34, 51, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 80px 0; }
+    .alt { background: var(--bg-alt); }
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -.02em; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); letter-spacing: -.01em; }
+    h3 { font-size: 1.15rem; }
+    p { margin: 0 0 16px; }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 640px; }
+    .eyebrow { text-transform: uppercase; font-size: .8rem; font-weight: 700; letter-spacing: .1em; color: var(--accent); margin-bottom: 10px; }
+    .center { text-align: center; }
+    .center .lead { margin-left: auto; margin-right: auto; }
+
+    .btn {
+      display: inline-block; padding: 14px 26px; border-radius: 999px; font-weight: 600;
+      text-decoration: none; border: 2px solid var(--brand); transition: background .15s, color .15s;
+      cursor: pointer; font-size: 1rem;
+    }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-dark); border-color: var(--brand-dark); }
+    .btn-ghost { background: transparent; color: var(--brand); }
+    .btn-ghost:hover { background: var(--brand); color: #fff; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-weight: 800; font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+    .logo span { color: var(--brand); }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; }
+    .nav-links a.btn { color: #fff; padding: 10px 20px; }
+    @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
+
+    /* Hero */
+    .hero { padding: 90px 0 70px; background: linear-gradient(160deg, #e8f4f8 0%, #ffffff 60%); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-note { font-size: .9rem; color: var(--muted); margin-top: 14px; }
+    .mock {
+      background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; border: 1px solid var(--line);
+    }
+    .mock-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+    .mock-row:last-child { border-bottom: 0; }
+    .pill { font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+    .pill-live { background: #e0f6ef; color: #0e7a5d; }
+    .pill-wait { background: #fff3dc; color: #8a5a00; }
+    .pill-done { background: #e7eef3; color: var(--muted); }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    /* Grids & cards */
+    .grid { display: grid; gap: 24px; }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 960px) { .g4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 760px) { .g3, .g4 { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+    .card p { color: var(--muted); margin: 0; }
+    .icon { width: 44px; height: 44px; border-radius: 10px; background: #e3f1f6; color: var(--brand); display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 16px; }
+
+    /* Problem */
+    .problem-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+    .problem-list li { padding-left: 34px; position: relative; color: var(--muted); }
+    .problem-list li::before { content: "✕"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: #fde8e8; color: #b42318; font-size: .75rem; display: grid; place-items: center; font-weight: 700; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
+    .check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .check-list li { padding-left: 34px; position: relative; }
+    .check-list li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: #e0f6ef; color: #0e7a5d; font-size: .8rem; display: grid; place-items: center; font-weight: 700; }
+
+    /* Steps */
+    .step-num { font-size: .85rem; font-weight: 800; color: #fff; background: var(--brand); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 14px; }
+
+    /* Pricing */
+    .price-card { display: flex; flex-direction: column; }
+    .price-card.featured { border: 2px solid var(--brand); box-shadow: var(--shadow); position: relative; }
+    .badge { position: absolute; top: -13px; left: 28px; background: var(--brand); color: #fff; font-size: .75rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+    .price { font-size: 2.2rem; font-weight: 800; margin: 8px 0 4px; }
+    .price small { font-size: 1rem; font-weight: 500; color: var(--muted); }
+    .price-card ul { list-style: none; padding: 0; margin: 20px 0 28px; flex: 1; display: grid; gap: 10px; }
+    .price-card li::before { content: "✓  "; color: var(--accent); font-weight: 700; }
+    .price-card .btn { text-align: center; }
+
+    .quote-box { margin-top: 40px; background: var(--bg-alt); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .quote-box h3 { font-size: 1.4rem; }
+    .quote-box p { color: var(--muted); margin: 0; }
+    .quote-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; font-size: .95rem; }
+    .quote-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .quote-table td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+    .quote-table tr.tot td { background: var(--brand); color: #fff; font-weight: 700; }
+    .quote-box .fine { grid-column: 1 / -1; font-size: .85rem; }
+    @media (max-width: 760px) { .quote-box { grid-template-columns: 1fr; padding: 22px; } }
+
+    /* Testimonials */
+    .quote { font-size: 1.05rem; color: var(--ink) !important; font-style: italic; margin-bottom: 18px !important; }
+    .who { font-weight: 600; font-size: .95rem; }
+    .who span { display: block; font-weight: 400; color: var(--muted); font-size: .85rem; }
+    .placeholder-note { font-size: .8rem; color: #8a5a00; background: #fff3dc; display: inline-block; padding: 4px 10px; border-radius: 6px; margin-top: 12px; }
+
+    /* FAQ */
+    details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+    summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.4rem; color: var(--brand); line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--muted); margin: 12px 0 0; }
+    .faq { max-width: 780px; margin: 0 auto; }
+
+    /* CTA / form */
+    .cta { background: var(--ink); color: #fff; }
+    .cta .lead { color: #b9c8d3; }
+    .cta .eyebrow { color: #5fe0bd; }
+    form { background: #fff; color: var(--ink); border-radius: var(--radius); padding: 30px; display: grid; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    label { font-size: .85rem; font-weight: 600; display: grid; gap: 6px; }
+    input, select, textarea { font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; width: 100%; }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); border-color: transparent; }
+    .form-msg { display: none; background: #e0f6ef; color: #0e7a5d; padding: 12px; border-radius: 10px; font-weight: 600; }
+
+    footer { padding: 36px 0; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
+    .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Telefonetica<span>Health</span></a>
+    <nav class="nav-links">
+      <a href="#solution">Platform</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#demo" class="btn btn-primary">Book a demo</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Telehealth & patient communications for clinics</div>
+      <h1>Stop losing patients to busy signals and voicemail.</h1>
+      <p class="lead">Telefonetica Health puts your phone lines, virtual visits, and patient messaging on one HIPAA-ready platform. Your front desk answers more calls, your providers see more patients, and fewer people slip through the cracks.</p>
+      <div class="hero-ctas">
+        <a href="#demo" class="btn btn-primary">Book a free 20-minute demo</a>
+        <a href="#pricing" class="btn btn-ghost">See pricing</a>
+      </div>
+      <p class="hero-note">Powered by Ooma Office, PCMag Business Choice for VoIP · 14 days free · Month-to-month</p>
+    </div>
+    <div class="mock" aria-label="Example dashboard">
+      <div class="mock-row"><strong>Today's patient queue</strong><span class="pill pill-live">LIVE</span></div>
+      <div class="mock-row"><span>📞 Incoming call · New patient</span><span class="pill pill-live">Answered</span></div>
+      <div class="mock-row"><span>🎥 Video visit · Dr. Alvarez</span><span class="pill pill-wait">Waiting room</span></div>
+      <div class="mock-row"><span>💬 SMS · Appointment confirmed</span><span class="pill pill-done">Done</span></div>
+      <div class="mock-row"><span>🔔 Refill request · Auto-routed</span><span class="pill pill-done">Done</span></div>
+      <div class="mock-row"><span>📅 No-show recovery text sent</span><span class="pill pill-done">Done</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="wrap two-col">
+    <div>
+      <div class="eyebrow">The problem</div>
+      <h2>Your phones are costing you patients and revenue.</h2>
+      <p class="lead">Most practices run on a patchwork of old phone systems, a separate video tool, and sticky notes. Patients notice.</p>
+      <ul class="problem-list">
+        <li>Calls go unanswered at peak hours, and those patients book somewhere else.</li>
+        <li>Staff spend hours on reminder calls, callbacks, and phone tag.</li>
+        <li>Video visits run on consumer apps that weren't built for healthcare.</li>
+        <li>No-shows leave empty slots on the schedule every week.</li>
+        <li>You can't see call volume, wait times, or missed opportunities.</li>
+      </ul>
+    </div>
+    <div class="card" style="background: var(--bg-alt); border: 0;">
+      <h3>What a missed call really costs</h3>
+      <p style="margin-bottom:14px">Multiply the calls you miss each day by your new-patient conversion rate and the value of a patient over a lifetime. For most clinics the total is far more than the cost of fixing the phones.</p>
+      <a href="#demo" class="btn btn-primary">Get your missed-call audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution" class="alt">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">The platform</div>
+      <h2>Everything patients use to reach you, in one place.</h2>
+      <p class="lead">Built for clinics, specialty practices, and multi-location groups.</p>
+    </div>
+    <div class="grid g3" style="margin-top:44px">
+      <div class="card"><div class="icon">📞</div><h3>Virtual receptionist & ring groups</h3><p>Greet every caller, route them to the right desk automatically, and ring several team members at once so calls don't go unanswered.</p></div>
+      <div class="card"><div class="icon">🎥</div><h3>HD video visits</h3><p>Built-in videoconferencing with screen sharing for virtual consults and follow-ups.</p></div>
+      <div class="card"><div class="icon">💬</div><h3>Texting & Shift-to-Text</h3><p>Two-way SMS from your practice number. Callers on hold can press a key to switch to a text conversation instead.</p></div>
+      <div class="card"><div class="icon">📅</div><h3>Online bookings</h3><p>Patients schedule appointments online, any time, without calling the front desk.</p></div>
+      <div class="card"><div class="icon">📠</div><h3>Virtual fax</h3><p>Send and receive faxes digitally (referrals, records, prior authorizations) with no fax machine.</p></div>
+      <div class="card"><div class="icon">📊</div><h3>Call recording & analytics</h3><p>Record calls for training and reference, transcribe voicemail, and track call volume and answer rates.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section>
+  <div class="wrap two-col">
+    <div>
+      <div class="eyebrow">Why practices switch</div>
+      <h2>More patients seen. Less time on the phone.</h2>
+      <p class="lead">Telefonetica Health takes repetitive phone work off your front desk so they can focus on the patients in front of them.</p>
+      <a href="#demo" class="btn btn-primary" style="margin-top:12px">See it in action</a>
+    </div>
+    <ul class="check-list">
+      <li><strong>Answer more calls.</strong> Smart routing and overflow mean fewer patients hear a busy signal.</li>
+      <li><strong>Grow without more hires.</strong> Automation handles reminders, confirmations, and common questions.</li>
+      <li><strong>Add telehealth revenue.</strong> Offer virtual follow-ups and new-patient consults without a separate vendor.</li>
+      <li><strong>One vendor, one bill.</strong> Replace several tools with a single platform and support team.</li>
+      <li><strong>Fast onboarding.</strong> We port your numbers, configure your workflows, and train your staff.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="alt">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">How it works</div>
+      <h2>Live in days, not months.</h2>
+    </div>
+    <div class="grid g4" style="margin-top:44px">
+      <div class="card"><div class="step-num">1</div><h3>Discovery call</h3><p>We map your call flows, locations, and goals in a 20-minute demo.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>Custom setup</h3><p>We configure routing, reminders, and your virtual waiting room.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>Number porting</h3><p>Your existing numbers move over with no downtime for patients.</p></div>
+      <div class="card"><div class="step-num">4</div><h3>Go live & optimize</h3><p>Staff training, then monthly reviews of your analytics.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<!-- TODO: Fill in Essentials and Pro Plus per-user prices. Pro price taken from a 5-user sample quote. -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">Pricing</div>
+      <h2>Three plans. 100+ features in every one.</h2>
+      <p class="lead">Priced per user, per month, on month-to-month terms. Unlimited calling in the US, Canada, Mexico and Puerto Rico on every plan.</p>
+    </div>
+    <div class="grid g3" style="margin-top:44px">
+      <div class="card price-card">
+        <h3>Essentials</h3>
+        <p>For small offices that need a reliable phone line.</p>
+        <div class="price">$XX<small>/user/mo</small></div>
+        <ul>
+          <li>100+ standard features</li>
+          <li>Unlimited calling (US, CA, MX, PR)</li>
+          <li>Virtual receptionist</li>
+          <li>Mobile app</li>
+        </ul>
+        <a href="#demo" class="btn btn-ghost">Get started</a>
+      </div>
+      <div class="card price-card featured">
+        <div class="badge">Most popular</div>
+        <h3>Pro</h3>
+        <p>For clinics that text, video, and record calls.</p>
+        <div class="price">$19.95<small>/user/mo</small></div>
+        <ul>
+          <li>Everything in Essentials</li>
+          <li>Desktop app</li>
+          <li>Text messaging</li>
+          <li>Video meetings (up to 25 people)</li>
+          <li>Call recording & analytics</li>
+          <li>Voicemail transcription</li>
+        </ul>
+        <a href="#demo" class="btn btn-primary">Book a demo</a>
+      </div>
+      <div class="card price-card">
+        <h3>Pro Plus</h3>
+        <p>For busy practices with high call volume.</p>
+        <div class="price">$XX<small>/user/mo</small></div>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>CRM integration</li>
+          <li>Call queuing & Shift-to-Text</li>
+          <li>Online bookings</li>
+          <li>Team chat & hot desking</li>
+        </ul>
+        <a href="#demo" class="btn btn-ghost">Talk to sales</a>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <div>
+        <div class="eyebrow">Sample quote</div>
+        <h3>A 5-person clinic on Ooma Office Pro</h3>
+        <p>No desk phones to buy: staff use the mobile and desktop apps. Month-to-month service with the first 14 days free.</p>
+      </div>
+      <table class="quote-table">
+        <tr><td>Ooma Office Pro × 5 users</td><td>$99.75/mo</td></tr>
+        <tr><td>Hardware (mobile & desktop app)</td><td>$0</td></tr>
+        <tr><td>Ooma AI</td><td>$0</td></tr>
+        <tr><td>Activation fee (one time)</td><td>$29.95</td></tr>
+        <tr class="tot"><td>Monthly total</td><td>$99.75/mo</td></tr>
+        <tr><td>Service term · Free days</td><td>1 month · 14 days</td></tr>
+      </table>
+      <p class="fine">Taxes and regulatory fees not included. Your quote depends on number of users, plan, and any hardware or internet service.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<!-- TODO: Replace with real, approved customer testimonials before publishing. -->
+<section class="alt">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">Customer stories</div>
+      <h2>What practices tell us.</h2>
+      <p class="placeholder-note">Sample text. Replace with real customer quotes before launch.</p>
+    </div>
+    <div class="grid g3" style="margin-top:44px">
+      <div class="card"><p class="quote">"[Customer quote about answering more calls and reducing front-desk stress.]"</p><div class="who">[Name]<span>[Title], [Practice name]</span></div></div>
+      <div class="card"><p class="quote">"[Customer quote about adding telehealth visits and new revenue.]"</p><div class="who">[Name]<span>[Title], [Practice name]</span></div></div>
+      <div class="card"><p class="quote">"[Customer quote about fewer no-shows and an easy setup.]"</p><div class="who">[Name]<span>[Title], [Practice name]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq" style="margin-top:32px">
+      <details><summary>Is Telefonetica Health HIPAA compliant?</summary><p>Yes. Calls, video visits, and messages are encrypted, and we sign a Business Associate Agreement (BAA) with every customer.</p></details>
+      <details><summary>Can we keep our existing phone numbers?</summary><p>Yes. We port your current numbers for you, and patients keep calling the same numbers with no downtime.</p></details>
+      <details><summary>How long does setup take?</summary><p>Most single-location practices are live within a few days. Multi-location rollouts are scheduled to fit your operations.</p></details>
+      <details><summary>Do patients need to download an app for video visits?</summary><p>No. Patients join from a secure link in their browser or text message.</p></details>
+      <details><summary>Does it integrate with our other software?</summary><p>CRM integration is included on Pro Plus. Tell us what you use during your demo and we'll walk you through the options.</p></details>
+      <details><summary>Is there a long-term contract?</summary><p>No. Service is month-to-month, and new accounts get 14 days free.</p></details>
+      <details><summary>Do we have to buy desk phones?</summary><p>No. Your team can make and take calls from the Ooma mobile and desktop apps. Desk phones are optional.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA + FORM -->
+<section id="demo" class="cta">
+  <div class="wrap two-col">
+    <div>
+      <div class="eyebrow">Book your demo</div>
+      <h2>See how many patients you could be missing.</h2>
+      <p class="lead">In 20 minutes we'll show you the platform, review your current call flow, and give you a free missed-call audit for your practice.</p>
+      <ul class="check-list" style="margin-top:24px">
+        <li>No obligation and no pressure</li>
+        <li>Personalized to your specialty and size</li>
+        <li>Clear pricing on the call</li>
+      </ul>
+    </div>
+    <!-- TODO: Point this form at your CRM or form backend (e.g. HubSpot, Formspree) by setting the action attribute. -->
+    <form id="demo-form" action="" method="post">
+      <div class="form-row">
+        <label>Full name<input name="name" required autocomplete="name"></label>
+        <label>Work email<input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="form-row">
+        <label>Practice name<input name="practice" required autocomplete="organization"></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <label>Number of providers
+        <select name="providers" required>
+          <option value="">Select…</option>
+          <option>1–3</option>
+          <option>4–10</option>
+          <option>11–50</option>
+          <option>50+</option>
+        </select>
+      </label>
+      <label>What's your biggest challenge right now?<textarea name="message" rows="3"></textarea></label>
+      <button type="submit" class="btn btn-primary">Book my free demo</button>
+      <div class="form-msg" id="form-msg">Thanks! We'll be in touch within one business day to schedule your demo.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> Telefonetica Health. All rights reserved.</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#demo">Contact sales</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // If no form backend is configured yet, show a confirmation instead of posting.
+  const form = document.getElementById('demo-form');
+  form.addEventListener('submit', function (e) {
+    if (!form.getAttribute('action')) {
+      e.preventDefault();
+      document.getElementById('form-msg').style.display = 'block';
+      form.reset();
+    }
+  });
+</script>
+</body>
+</html>
